@@ -28,7 +28,7 @@ A Kubernetes distribution that runs a single-node cluster inside a VM or contain
 - Many built-in addons
 - Supports container runtimes
 **Cons**:
-- Slightly heavier than others
+- Can be heavier when using VM drivers
 - Needs virtualization or Docker installed
 
 
@@ -46,6 +46,7 @@ kubectl get nodes
 
 ### 2. kind - https://kind.sigs.k8s.io/
 Run Kubernetes clusters in Docker containers — ideal for testing Kubernetes itself.
+initially created for testing Kubernetes itself, widely used for CI and development
 - **Supported OSes**: Linux, macOS, Windows.
 - **Automation capabilities**: 
     - Highly extensible CLI workflow
@@ -62,7 +63,7 @@ Run Kubernetes clusters in Docker containers — ideal for testing Kubernetes it
 - Designed for Kubernetes development
 - Good Podman support, allowing Docker Desktop avoidance.
 **Cons**:
-- Networking can be tricky
+- Networking can be tricky. Accessing services from the host often requires NodePort or port-forwarding.
 - Not suitable for persistent workloads
 
 ```bash
@@ -147,12 +148,16 @@ Compatibility with cluster tools:
 - kind — good Podman support via Docker API compatibility.
 - k3d — Podman support exists but is still experimental.
 
-## Demo
-A brief demonstration of your recommended tool using an example, such as deploying a “Hello World” application on Kubernetes.
-
 
 ## Conclusions
-Conclusions and recommendations for using each tool in a PoC for a startup.
+For POC and local development, **k3d** is recommended due to its speed, simplicity, and Docker-based isolation. It allows rapid cluster creation and is ideal for ephemeral environments.
+
+## Demo
+[![asciicast](https://asciinema.org/a/hmnM1IPz7nXMAewiql4ykWWJw.svg)](https://asciinema.org/a/hmnM1IPz7nXMAewiql4ykWWJw)
+
+Deployed app:
+![alt text](localhost8081.png)
+
 
 Resources: 
 - https://medium.com/@emircanagac/comparing-minikube-k3s-k3d-microk8s-and-more-lightweight-kubernetes-for-local-development-929585ba9503
