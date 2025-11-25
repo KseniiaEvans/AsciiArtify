@@ -153,7 +153,9 @@ Compatibility with cluster tools:
 For POC and local development, **k3d** is recommended due to its speed, simplicity, and Docker-based isolation. It allows rapid cluster creation and is ideal for ephemeral environments.
 
 ## Demo
-[![asciicast](https://asciinema.org/a/hmnM1IPz7nXMAewiql4ykWWJw.svg)](https://asciinema.org/a/hmnM1IPz7nXMAewiql4ykWWJw)
+Link to recording: [demo.cast](https://asciinema.org/a/hmnM1IPz7nXMAewiql4ykWWJw)
+
+![alt text](demo.gif)
 
 Deployed app:
 ![alt text](localhost8081.png)
