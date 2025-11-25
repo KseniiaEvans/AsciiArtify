@@ -11,19 +11,141 @@ Infrastructure requirements at the PoC stage:
 - the ability to further transfer the approach to CI/CD.
 
 ## Features
-### supported OSes and architectures
-### automation capabilities
-### additional features such as monitoring 
-### and managing a Kubernetes cluster.
 
-## Pros and Cons
-A description of the advantages and disadvantages of each tool
+### 1. minikube - https://minikube.sigs.k8s.io/docs/
 
-### ease of use
-### speed of deployment
-### stability
-### documentation and community support
-### complexity of setup and use
+A Kubernetes distribution that runs a single-node cluster inside a VM or container.
+
+- **Supported OSes**: Linux, macOS, Windows
+- **Automation capabilities**: CLI-based automation, supports multiple cluster profiles
+- **Additional features**: built-in Dashboard UI, metrics server, and addons (like ingress, storage, etc.)
+- **Maintainer**: Kubernetes SIGs
+- **Installation**: Easy (supports VirtualBox, Docker, KVM, etc.)
+- **Ideal for**: Local development, quick testing
+
+**Pros**:
+- Official Kubernetes project
+- Many built-in addons
+- Supports container runtimes
+**Cons**:
+- Slightly heavier than others
+- Needs virtualization or Docker installed
+
+
+```bash
+# Download Minikube (Linux example)
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+# Start a cluster using Docker as driver
+minikube start --driver=docker
+
+# Verify
+kubectl get nodes
+```
+
+### 2. kind - https://kind.sigs.k8s.io/
+Run Kubernetes clusters in Docker containers — ideal for testing Kubernetes itself.
+- **Supported OSes**: Linux, macOS, Windows.
+- **Automation capabilities**: 
+    - Highly extensible CLI workflow
+    - YAML-based cluster config for automation
+    - Designed for CI/CD environments — rapid ephemeral cluster creation.
+- **Additional features**: 
+    - Uses standard Kubernetes tools (Helm, metrics-server, dashboard installed manually)
+    - No built-in addons.
+- **Maintainer**: Kubernetes SIGs
+- **Installation**: Simple CLI tool
+- **Ideal for**: Kubernetes testing, CI environments
+**Pros**:
+- Lightweight and fast
+- Designed for Kubernetes development
+- Good Podman support, allowing Docker Desktop avoidance.
+**Cons**:
+- Networking can be tricky
+- Not suitable for persistent workloads
+
+```bash
+# Install kind
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
+# Create a cluster
+kind create cluster
+
+# Verify
+kubectl get nodes
+```
+
+### 3. k3d - https://k3d.io/
+
+A wrapper to run k3s clusters inside Docker containers.
+- **Supported OSes**: Linux, macOS, Windows.
+- **Automation capabilities**: 
+    - Very simple CLI
+    - Easy scripting for multi-node clusters.
+- **Additional features**: 
+    - Minimal built-in features (k3s is intentionally lightweight).
+    - Supports load-balancer port mappings
+    - Monitoring/dashboard installed manually via standard Kubernetes tooling.
+- **Maintainer**: Community (k3d-io)
+- **Installation**: Extremely fast setup
+- **Ideal** for: Local dev, CI pipelines
+
+**Pros**:
+- Super fast cluster creation
+- Clean Docker-based isolation
+- Ideal for ephemeral environments
+
+**Cons**:
+- Not suitable for production
+- Requires Docker installed
+
+```bash
+# Install k3d
+curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+
+# Create a cluster
+k3d cluster create mycluster
+
+# Verify
+kubectl get nodes
+```
+
+## Pros and Cons, comparison table
+
+![alt text](comparison_table.png)
+
+## Docker Desktop Licensing
+
+Docker Desktop is free for:
+
+- personal use
+- education
+- non-commercial open-source
+- small businesses (<250 employees and < $10M annual revenue)
+
+For larger organizations, a paid subscription is required.
+
+For AsciiArtify (as a small startup), Docker Desktop is safe to use, but:
+
+- future growth may require a paid plan;
+- some enterprise environments forbid Docker Desktop entirely.
+
+### Podman as a Free Alternative
+
+Pros of Podman:
+
+- Rootless by default, daemonless — more secure.
+- CLI-compatible with Docker (alias docker=podman).
+- No licensing concerns.
+
+Compatibility with cluster tools:
+
+- minikube — official Podman driver available; recommended with CRI-O on Linux.
+- kind — good Podman support via Docker API compatibility.
+- k3d — Podman support exists but is still experimental.
 
 ## Demo
 A brief demonstration of your recommended tool using an example, such as deploying a “Hello World” application on Kubernetes.
@@ -31,3 +153,10 @@ A brief demonstration of your recommended tool using an example, such as deployi
 
 ## Conclusions
 Conclusions and recommendations for using each tool in a PoC for a startup.
+
+Resources: 
+- https://medium.com/@emircanagac/comparing-minikube-k3s-k3d-microk8s-and-more-lightweight-kubernetes-for-local-development-929585ba9503
+- https://minikube.sigs.k8s.io/docs/start/
+- https://kind.sigs.k8s.io/docs/user/quick-start/
+- https://docs.k3s.io/installation/requirements
+
