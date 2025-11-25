@@ -42,3 +42,7 @@ Open your browser and navigate to `https://localhost:8080`. Accept the rist and 
 ```bash
 kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d; echo
 ```
+
+## Demo:
+
+Link: https://asciinema.org/a/nwa6gGH9TN42yTLhfUFxITB3P
