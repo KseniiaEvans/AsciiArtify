@@ -116,7 +116,7 @@ kubectl get nodes
 
 ## Pros and Cons, comparison table
 
-![alt text](comparison_table.png)
+![alt text](./media/comparison_table.png)
 
 ## Docker Desktop Licensing
 
@@ -155,10 +155,10 @@ For POC and local development, **k3d** is recommended due to its speed, simplici
 ## Demo
 Link to recording: [demo.cast](https://asciinema.org/a/hmnM1IPz7nXMAewiql4ykWWJw)
 
-![alt text](demo.gif)
+![alt text](./media/demo.gif)
 
 Deployed app:
-![alt text](localhost8081.png)
+![alt text](./media/localhost8081.png)
 
 
 Resources: 

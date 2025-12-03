@@ -47,5 +47,5 @@ kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.pas
 
 Link: [demo](https://asciinema.org/a/nwa6gGH9TN42yTLhfUFxITB3P)
 
-![alt text](demo4_2.gif)
+![alt text](./media/demo4_2.gif)
 
