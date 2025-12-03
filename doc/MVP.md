@@ -2,6 +2,10 @@
 
 Demo video: 
 
-You may also download from repo: [./media/demo.mp4](./media/demo.mp4)
+https://github.com/user-attachments/assets/5043bdc0-0808-434a-953d-6c41b65d877a
 
-[![Demo video](https://img.youtube.com/vi/zje6Tyk8np4/0.jpg)](https://youtu.be/zje6Tyk8np4)
+
+Or watch on Youtube: https://youtu.be/zje6Tyk8np4
+
+
+
