@@ -2,5 +2,6 @@
 
 Demo video: 
 
-<video src="./media/demo.mp4" width="320" height="240" controls></video>
+You may also download from repo: [./media/demo.mp4](./media/demo.mp4)
 
+[![Demo video](https://img.youtube.com/vi/zje6Tyk8np4/0.jpg)](https://youtu.be/zje6Tyk8np4)
